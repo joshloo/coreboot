@@ -77,8 +77,7 @@ void do_str (const char *src, mp_parse_input_kind_t input_kind)
 }
 
 char *start_script = \
-"print('hello Micropython.')\n";
-//"print('answer: ' + str(100+200))";
+"print('hello Micropython. Arithmetic operations: 100+200 = ' + str(100+200) + ', 12*12 = ' + str(12*12))\n";
 
 // not done yet, next step for basic services (file IO)
 //     "exec(pyb.load_file('!SETP/STPY'))\n";
