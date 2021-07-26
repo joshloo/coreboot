@@ -14,4 +14,4 @@ Steps:
 
 5. Run "./runqemu.sh"
 
-6. You should see "Hello World Micropython" in QEMU serial log.
+6. You should see "hello Micropython. Arithmetic operations: 100+200 = 300, 12*12 = 144" in QEMU serial log.
