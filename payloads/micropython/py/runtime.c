@@ -43,7 +43,7 @@
 #include "py/builtin.h"
 #include "py/stackctrl.h"
 #include "py/gc.h"
-
+/*
 #if MICROPY_DEBUG_VERBOSE // print debugging info
 #define DEBUG_PRINT (1)
 #define DEBUG_printf DEBUG_printf
@@ -52,6 +52,9 @@
 #define DEBUG_printf(...) (void)0
 #define DEBUG_OP_printf(...) (void)0
 #endif
+*/
+#define DEBUG_printf printf
+#define DEBUG_OP_printf(...) printf(__VA_ARGS__)
 
 const mp_obj_module_t mp_module___main__ = {
     .base = { &mp_type_module },
@@ -195,6 +198,8 @@ mp_obj_t mp_load_global(qstr qst) {
             mp_raise_msg_varg(&mp_type_NameError, MP_ERROR_TEXT("name '%q' isn't defined"), qst);
             #endif
         }
+    } else {
+    	DEBUG_OP_printf("elem->value 0x%x\n", elem->value);
     }
     return elem->value;
 }

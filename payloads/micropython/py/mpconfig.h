@@ -441,13 +441,15 @@
 //   mp_bytecode_print
 //   mp_parse_node_print
 #ifndef MICROPY_DEBUG_PRINTERS
-#define MICROPY_DEBUG_PRINTERS (0)
+#define MICROPY_DEBUG_PRINTERS (1)
 #endif
 
 // Whether to enable all debugging outputs (it will be extremely verbose)
 #ifndef MICROPY_DEBUG_VERBOSE
-#define MICROPY_DEBUG_VERBOSE (0)
+#define MICROPY_DEBUG_VERBOSE (1)
 #endif
+#define DEBUG_printf printf
+#define DEBUG_OP_printf(...) printf(__VA_ARGS__)
 
 // Whether to enable debugging versions of MP_OBJ_NULL/STOP_ITERATION/SENTINEL
 #ifndef MICROPY_DEBUG_MP_OBJ_SENTINELS

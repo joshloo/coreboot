@@ -64,24 +64,29 @@ void do_str (const char *src, mp_parse_input_kind_t input_kind)
 {
   nlr_buf_t nlr;
   if (nlr_push (&nlr) == 0) {
+  printf("0\n");
     mp_lexer_t *lex = mp_lexer_new_from_str_len (MP_QSTR__lt_stdin_gt_, src, strlen (src), 0);
     qstr source_name = lex->source_name;
     mp_parse_tree_t parse_tree = mp_parse (lex, input_kind);
     mp_obj_t module_fun = mp_compile (&parse_tree, source_name, true);
     mp_call_function_0 (module_fun);
     nlr_pop();
+  printf("0.2\n");
   } else {
+  printf("0.1\n");
     // uncaught exception
     mp_obj_print_exception (&mp_plat_print, (mp_obj_t)nlr.ret_val);
   }
 }
 
 char *start_script = \
-     "exec(pyb.load_file('!SETP/STPY'))\n";
+"print('hello Jinjhu!')\n";
+//"100+200";
+//     "exec(pyb.load_file('!SETP/STPY'))\n";
 
 int main(int argc, char **argv)
 {
-  printf("Hello, world Micropython!\n");
+  printf("Hello world, Micropython!\n");
   mp_stack_ctrl_init();
   mp_stack_set_limit (0x10000);
 
@@ -94,12 +99,15 @@ int main(int argc, char **argv)
 
   mp_init();
 
-  do_str (start_script,  MP_PARSE_FILE_INPUT);
+  printf("Before run script\n");
+  do_str (start_script,  MP_PARSE_SINGLE_INPUT);
+  printf("After run script\n");
 
-  pyexec_friendly_repl();
+//  pyexec_friendly_repl();
 
   // clean up
   mp_deinit();
-
+  printf("5!\n");
+  return 0;
 }
 
