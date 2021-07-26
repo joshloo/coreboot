@@ -1,3 +1,7 @@
+Pre-requisite, run make menuconfig and save.
+
+Able to perform the same with coreinfo and compile other libpayload based payload
+
 Steps:
 
 1. In this directory, run "make"
