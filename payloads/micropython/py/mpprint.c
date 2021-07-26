@@ -51,7 +51,7 @@ STATIC void plat_print_strn(void *env, const char *str, size_t len) {
 const mp_print_t mp_plat_print = {NULL, plat_print_strn};
 
 int mp_print_str(const mp_print_t *print, const char *str) {
-  printf("mp_print_str\n");
+//  printf("mp_print_str\n");
     size_t len = strlen(str);
     if (len) {
         print->print_strn(print->data, str, len);
@@ -60,7 +60,7 @@ int mp_print_str(const mp_print_t *print, const char *str) {
 }
 
 int mp_print_strn(const mp_print_t *print, const char *str, size_t len, int flags, char fill, int width) {
-  printf("mp_print_strn\n");
+//  printf("mp_print_strn\n");
     int left_pad = 0;
     int right_pad = 0;
     int pad = width - len;
@@ -104,7 +104,7 @@ int mp_print_strn(const mp_print_t *print, const char *str, size_t len, int flag
     if (len) {
         print->print_strn(print->data, str, len);
         total_chars_printed += len;
-  printf("%s\n", str);
+  	printf("\n\n%s\n\n", str);
     }
     if (right_pad > 0) {
         total_chars_printed += right_pad;
@@ -131,7 +131,7 @@ int mp_print_strn(const mp_print_t *print, const char *str, size_t len, int flag
 // This function is used exclusively by mp_vprintf to format ints.
 // It needs to be a separate function to mp_print_mp_int, since converting to a mp_int looses the MSB.
 STATIC int mp_print_int(const mp_print_t *print, mp_uint_t x, int sgn, int base, int base_char, int flags, char fill, int width) {
-  printf("mp_print_int\n");
+//  printf("mp_print_int\n");
     char sign = 0;
     if (sgn) {
         if ((mp_int_t)x < 0) {
@@ -206,7 +206,7 @@ STATIC int mp_print_int(const mp_print_t *print, mp_uint_t x, int sgn, int base,
 }
 
 int mp_print_mp_int(const mp_print_t *print, mp_obj_t x, int base, int base_char, int flags, char fill, int width, int prec) {
-  printf("mp_print_mp_int\n");
+//  printf("mp_print_mp_int\n");
     // These are the only values for "base" that are required to be supported by this
     // function, since Python only allows the user to format integers in these bases.
     // If needed this function could be generalised to handle other values.
@@ -346,7 +346,7 @@ int mp_print_mp_int(const mp_print_t *print, mp_obj_t x, int base, int base_char
 
 #if MICROPY_PY_BUILTINS_FLOAT
 int mp_print_float(const mp_print_t *print, mp_float_t f, char fmt, int flags, char fill, int width, int prec) {
-  printf("mp_print_float\n");
+//  printf("mp_print_float\n");
     char buf[32];
     char sign = '\0';
     int chrs = 0;
@@ -383,7 +383,7 @@ int mp_print_float(const mp_print_t *print, mp_float_t f, char fmt, int flags, c
 #endif
 
 int mp_printf(const mp_print_t *print, const char *fmt, ...) {
-  printf("mp_printf\n");
+//  printf("mp_printf\n");
     va_list ap;
     va_start(ap, fmt);
     int ret = mp_vprintf(print, fmt, ap);
@@ -392,7 +392,7 @@ int mp_printf(const mp_print_t *print, const char *fmt, ...) {
 }
 
 int mp_vprintf(const mp_print_t *print, const char *fmt, va_list args) {
-  printf("mp_vprintf\n");
+//  printf("mp_vprintf\n");
     int chrs = 0;
     for (;;) {
         {

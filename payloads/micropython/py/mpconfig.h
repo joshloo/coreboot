@@ -446,7 +446,7 @@
 
 // Whether to enable all debugging outputs (it will be extremely verbose)
 #ifndef MICROPY_DEBUG_VERBOSE
-#define MICROPY_DEBUG_VERBOSE (1)
+#define MICROPY_DEBUG_VERBOSE (0)
 #endif
 #define DEBUG_printf printf
 #define DEBUG_OP_printf(...) printf(__VA_ARGS__)
